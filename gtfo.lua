@@ -11,6 +11,8 @@ terminal   = "roxterm"
 
 browser    = "chromium"
 browser2   = "dwb"
+
+editor_cmd = "emacsclient -c"
 -- }}}
 
 -- {{{ Required libraries
@@ -19,6 +21,7 @@ local beautiful = require("beautiful")
 local rules     = require("awful.rules")
 
 require("awful.autofocus")
+require("freedesktop/freedesktop")
 -- }}}
 
 require("gtfo/error-handling")
@@ -67,10 +70,10 @@ local panel = panel_generator(layouts, {
 
 local mouse_gen = require("gtfo/bindings/mouse-generator")
 local keygen = require("gtfo/bindings/key-generator")
-local keymap = keygen(panel, mainmenu, layouts, modkey, altkey,
+local keymap = keygen(panel, mymainmenu, layouts, modkey, altkey,
                       terminal, browser, browser2)
 
-root.buttons(mouse_gen(mainmenu))
+root.buttons(mouse_gen(mymainmenu))
 root.keys(keymap)
 
 -- }}}
