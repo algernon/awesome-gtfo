@@ -80,19 +80,26 @@ local client_keygen = require("gtfo/bindings/client-keygen")
 local client_bindings = client_keygen (modkey)
 
 local base_rules = require ("gtfo/rules")
-local tags = display["tags"]
+
+function get_special_tag(display, special)
+   local spec = display["specials"][special]
+   local tags = display["tags"]
+
+   return tags[spec["screen"]][spec["tag"]]
+end
+
 rules.rules = awful.util.table.join(
    base_rules(client_bindings["keys"], client_bindings["buttons"]),
 
    { rule = { class = "Chromium" },
-     properties = { tag = tags[2][1],
+     properties = { tag = get_special_tag(display, "browser"),
                     maximized_horizontal = true,
                     maximized_vertical = true
      }
    },
 
    { rule = { class = "banshee" },
-     properties = { tag = tags[1][2],
+     properties = { tag = get_special_tag(display, "music"),
                     fullscreen = true
      }
    },
@@ -102,25 +109,18 @@ rules.rules = awful.util.table.join(
    },
 
    { rule = { class = "Transmission-gtk" },
-     properties = { tag = tags[1][4] }
+     properties = { tag = get_special_tag(display, "torrent") }
    },
 
    { rule = { class = "MPlayer" },
      properties = { floating = true } },
 
    { rule = { class = "Dwb" },
-     properties = { tag = tags[2][1],
+     properties = { tag = get_special_tag(display, "browser"),
                     fullscreen = true } },
 
    { rule = { instance = "plugin-container" },
-     properties = { tag = tags[1][1] } },
-
-   { rule = { class = "Gimp" },
-     properties = { tag = tags[1][4] } },
-
-   { rule = { class = "Gimp", role = "gimp-image-window" },
-     properties = { maximized_horizontal = true,
-                    maximized_vertical = true } }
+     properties = { tag = display["tags"][1][1] } }
 )
 
 -- }}}
