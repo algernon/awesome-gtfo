@@ -252,21 +252,19 @@ return function (layouts, settings)
 
    if settings["auto_hide"] == true then
       local ahtimer = timer({ timeout = 1 })
+
       ahtimer:connect_signal(
          "timeout",
          function ()
-            for s = 1, settings["max_screen"] do
-               if mouse.coords().y <= 18 then
-                  panel[s].visible = true
-                  panel[s].height = 18
-               end
+            if mouse.coords().y <= 18 then
+               panel[mouse.screen].visible = true
+            end
 
-               if mouse.coords().y > 36 then
-                  panel[s].visible = false
-                  panel.height = 0
-               end
+            if mouse.coords().y > 36 then
+               panel[mouse.screen].visible = false
             end
       end)
+      panel.timer = ahtimer
       ahtimer:start ()
    end
 
