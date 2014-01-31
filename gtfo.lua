@@ -17,7 +17,6 @@ editor_cmd = "emacsclient -c"
 
 -- {{{ Required libraries
 local awful     = require("awful")
-local beautiful = require("beautiful")
 local rules     = require("awful.rules")
 
 require("awful.autofocus")
