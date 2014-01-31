@@ -29,6 +29,7 @@ require("gtfo/autostart")
 run_once("unclutter")
 run_once("gnome-screensaver")
 run_once("nm-applet")
+run_once("compton")
 -- }}}
 
 -- {{{ Theme
