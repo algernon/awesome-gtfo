@@ -64,9 +64,11 @@ return function (panel, mainmenu, layouts, modkey, altkey,
                       panel.timer:stop()
                    end
 
-                   panel[mouse.screen].visible = not panel[mouse.screen].visible
-                   if not panel[mouse.screen].visible and panel.timer then
-                      panel.timer:start()
+                   if panel[mouse.screen] then
+                      panel[mouse.screen].visible = not panel[mouse.screen].visible
+                      if not panel[mouse.screen].visible and panel.timer then
+                         panel.timer:start()
+                      end
                    end
       end),
 

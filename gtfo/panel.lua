@@ -256,12 +256,14 @@ return function (layouts, settings)
       ahtimer:connect_signal(
          "timeout",
          function ()
-            if mouse.coords().y <= 18 then
-               panel[mouse.screen].visible = true
-            end
+            if panel[mouse.screen] then
+               if mouse.coords().y <= 18 then
+                  panel[mouse.screen].visible = true
+               end
 
-            if mouse.coords().y > 36 then
-               panel[mouse.screen].visible = false
+               if mouse.coords().y > 36 then
+                  panel[mouse.screen].visible = false
+               end
             end
       end)
       panel.timer = ahtimer
