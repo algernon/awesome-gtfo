@@ -257,7 +257,7 @@ return function (layouts, settings)
          "timeout",
          function ()
             if panel[mouse.screen] then
-               if mouse.coords().y <= 18 then
+               if mouse.coords().y <= 8 then
                   panel[mouse.screen].visible = true
                end
 
