@@ -120,6 +120,10 @@ return function (panel, mainmenu, layouts, modkey, altkey,
                 function ()
                    awful.util.spawn("gnome-screensaver-command --lock")
       end),
+      awful.key({ modkey, "Control" }, "s",
+                function ()
+                   awful.util.spawn("gksudo pm-suspend")
+      end),
 
       -- Widgets popups
       awful.key({ altkey,           }, "c",
