@@ -116,6 +116,10 @@ return function (panel, mainmenu, layouts, modkey, altkey,
                 function () awful.util.spawn(terminal) end),
       awful.key({ modkey, "Control" }, "r",      awesome.restart),
       awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
+      awful.key({ modkey, "Control" }, "l",
+                function ()
+                   awful.util.spawn("gnome-screensaver-command --lock")
+      end),
 
       -- Widgets popups
       awful.key({ altkey,           }, "c",
