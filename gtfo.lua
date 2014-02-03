@@ -43,13 +43,14 @@ require("gtfo/theme")
 -- {{{ Display (tags & screens)
 
 local display_setup = require("gtfo/display-setup")
-local display = display_setup({ "☭", "♫", "✆", "⌘", "✉"}, {
-                                 awful.layout.suit.floating,
-                                 awful.layout.suit.tile,
-                                 awful.layout.suit.tile.bottom,
-                                 awful.layout.suit.fair,
-                                 awful.layout.suit.fair.horizontal,
-})
+local layouts = {
+   awful.layout.suit.floating,
+   awful.layout.suit.tile,
+   awful.layout.suit.tile.bottom,
+   awful.layout.suit.fair,
+   awful.layout.suit.fair.horizontal,
+}
+local display = display_setup({ "☭", "♫", "✆", "⌘", "✉"}, layouts)
 
 -- }}}
 
